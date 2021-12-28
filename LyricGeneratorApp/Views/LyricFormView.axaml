@@ -1,0 +1,70 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:uc="clr-namespace:LyricGeneratorApp.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
+             x:Class="LyricGeneratorApp.Views.LyricFormView">
+	<UserControl.Styles>
+		<StyleInclude Source="/Resources/LyricFormViewStyles.axaml" />
+	</UserControl.Styles>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<TextBox Classes="cell" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Height="250" Watermark="Lyrics..." Text="{Binding Lyrics}" />
+		<Label Grid.Row="1" Grid.Column="0" Content="Bottom Space" />
+		<NumericUpDown Classes="cell" Grid.Row="1" Grid.Column="1" Value="{Binding BottomSpace}" />
+		<Label Grid.Row="1" Grid.Column="2" Content="Draw RGBA" />
+		<Grid Classes="cell" Grid.Row="1" Grid.Column="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<NumericUpDown Classes="rgb" Grid.Row="0" Grid.Column="0" Watermark="Red" Value="{Binding DrawRed}" />
+			<NumericUpDown Classes="rgb" Grid.Row="0" Grid.Column="1" Watermark="Green" Value="{Binding DrawGreen}" />
+			<NumericUpDown Classes="rgb" Grid.Row="0" Grid.Column="2" Watermark="Blue" Value="{Binding DrawBlue}" />
+			<NumericUpDown Classes="rgb" Grid.Row="0" Grid.Column="3" Watermark="Alpha" Value="{Binding DrawAlpha}" />
+		</Grid>
+		<Label Grid.Row="2" Grid.Column="0" Content="Width" />
+		<NumericUpDown Classes="cell" Grid.Row="2" Grid.Column="1" Value="{Binding Width}" />
+		<Label Grid.Row="2" Grid.Column="2" Content="Fade RGB" />
+		<Grid Classes="cell" Grid.Row="2" Grid.Column="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<NumericUpDown Classes="rgb" Grid.Row="0" Grid.Column="0" Watermark="Red" Value="{Binding FadeRed}" />
+			<NumericUpDown Classes="rgb" Grid.Row="0" Grid.Column="1" Watermark="Green" Value="{Binding FadeGreen}" />
+			<NumericUpDown Classes="rgb" Grid.Row="0" Grid.Column="2" Watermark="Blue" Value="{Binding FadeBlue}" />
+			<NumericUpDown Classes="rgb" Grid.Row="0" Grid.Column="3" Watermark="Alpha" Value="{Binding FadeAlpha}" />
+		</Grid>
+		<Label Grid.Row="3" Grid.Column="0" Content="Height" />
+		<NumericUpDown Classes="cell" Grid.Row="3" Grid.Column="1" Value="{Binding Height}" />
+		<StackPanel Grid.Row="5" Grid.Column="3" HorizontalAlignment="Right" Orientation="Horizontal">
+			<Button Command="{Binding Reset}">Reset</Button>
+			<Button Command="{Binding $parent[Window].DataContext.Generate}">Generate</Button>
+		</StackPanel>
+	</Grid>
+</UserControl>
