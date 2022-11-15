@@ -15,6 +15,14 @@ namespace LyricGeneratorLib
         public const int DEFAULT_BOTTOM_SPACE = 0;
         public const byte DEFAULT_COLOR_FADE = 175;
         public const byte DEFAULT_COLOR_WHITE = 255;
+        public const byte DEFAULT_DRAW_R = 255;
+        public const byte DEFAULT_DRAW_G = 255;
+        public const byte DEFAULT_DRAW_B = 255;
+        public const byte DEFAULT_DRAW_A = 255;
+        public const byte DEFAULT_FADE_R = 255;
+        public const byte DEFAULT_FADE_G = 255;
+        public const byte DEFAULT_FADE_B = 255;
+        public const byte DEFAULT_FADE_A = 175;
         public const string DEFAULT_FONT = "Arial Black";
         public const int DEFAULT_FONT_SIZE = 56;
         public const int DEFAULT_HEIGHT = 1080;
