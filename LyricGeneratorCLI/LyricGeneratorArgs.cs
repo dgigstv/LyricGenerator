@@ -5,6 +5,7 @@
         public int Space { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
+        public int FontSize { get; set; }
         public byte DrawRed { get; set; }
         public byte FadeRed { get; set; }
         public byte DrawGreen { get; set; }

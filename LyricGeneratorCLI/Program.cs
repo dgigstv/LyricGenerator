@@ -15,6 +15,10 @@ namespace LyricGeneratorCLI
                 name: "--height",
                 description: "Sets the height of the generated image.",
                 getDefaultValue: () => LyricGenerator.DEFAULT_HEIGHT);
+            Option<int> fontSizeOpt = new(
+                name: "--font-size",
+                description: "Sets the size of the font in the image.",
+                getDefaultValue: () => LyricGenerator.DEFAULT_FONT_SIZE);
             Option<int> widthOpt = new(
                 name: "--width",
                 description: "Sets the width of the generated image.",
@@ -80,6 +84,7 @@ namespace LyricGeneratorCLI
             rootCommand.AddOption(spaceOpt);
             rootCommand.AddOption(heightOpt);
             rootCommand.AddOption(widthOpt);
+            rootCommand.AddOption(fontSizeOpt);
             rootCommand.AddOption(dRedOpt);
             rootCommand.AddOption(fRedOpt);
             rootCommand.AddOption(dGreenOpt);
@@ -94,7 +99,21 @@ namespace LyricGeneratorCLI
             {
                 if (fileInfo != null)
                 {
-                    LyricGenerator generator = new();
+                    LyricGenerator generator = new()
+                    {
+                        BottomSpace = argsBinder.Space,
+                        DrawColorR = argsBinder.DrawRed,
+                        DrawColorG = argsBinder.DrawGreen,
+                        DrawColorB = argsBinder.DrawBlue,
+                        DrawColorA = argsBinder.DrawAlpha,
+                        FadeColorR = argsBinder.FadeRed,
+                        FadeColorG = argsBinder.FadeGreen,
+                        FadeColorB = argsBinder.FadeBlue,
+                        FadeColorA = argsBinder.FadeAlpha,
+                        Width = argsBinder.Width,
+                        Height = argsBinder.Height,
+                        FontSize = argsBinder.FontSize,
+                    };
 
                     string lyrics = string.Empty;
                     int input;
@@ -118,6 +137,7 @@ namespace LyricGeneratorCLI
                 spaceOption: spaceOpt,
                 heightOption: heightOpt,
                 widthOption: widthOpt,
+                fontSizeOption: fontSizeOpt,
                 drawRedOption: dRedOpt,
                 fadeRedOption: fRedOpt,
                 drawGreenOption: dGreenOpt,

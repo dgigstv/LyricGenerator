@@ -101,21 +101,21 @@ namespace LyricGeneratorLib
 
         private MemoryStream DrawImage(string fadeLyric, string brightLyric)
         {
-            MemoryStream output = new MemoryStream();
+            MemoryStream output = new();
             using Image image = new Image<Rgba32>(Width, Height);
 
             if (SystemFonts.TryFind(Font, out FontFamily? family))
             {
                 Font font = family.CreateFont(FontSize, FontStyle.Bold);
-                TextOptions options = new TextOptions()
+                TextOptions options = new()
                 {
                     HorizontalAlignment = HorizontalAlignment.Left
                 };
 
-                Color fadeColor = new Color(new Rgba32(FadeColorR, FadeColorG, FadeColorB, FadeColorA));
-                Color drawColor = new Color(new Rgba32(DrawColorR, DrawColorG, DrawColorB, DrawColorA));
+                Color fadeColor = new(new Rgba32(FadeColorR, FadeColorG, FadeColorB, FadeColorA));
+                Color drawColor = new(new Rgba32(DrawColorR, DrawColorG, DrawColorB, DrawColorA));
                 FontRectangle measurement = TextMeasurer.Measure(fadeLyric, new RendererOptions(font));
-                PointF location = new PointF((Width - measurement.Width) / 2, Height - measurement.Height - BottomSpace);
+                PointF location = new((Width - measurement.Width) / 2, Height - measurement.Height - BottomSpace);
 
                 image.Mutate(x => x.DrawText(fadeLyric, font, fadeColor, location));
                 image.Mutate(x => x.DrawText(brightLyric, font, drawColor, location));
